@@ -1,0 +1,24 @@
+#!/bin/sh
+# [Gedit Tool]
+# Name=Compile
+# Shortcut=F5
+# Applicability=all
+# Output=output-panel
+# Input=nothing
+# Save-files=document
+
+CURRENTFILE=$GEDIT_CURRENT_DOCUMENT_NAME;
+FILENAME=`echo $CURRENTFILE | awk -F"." '{ print $1 }'`
+EXTENSION=`echo $CURRENTFILE | awk -F"." '{ print $2 }'`
+
+case $EXTENSION in
+	"java")
+		javac $CURRENTFILE;
+		;;
+	"c")
+		gcc -Wall -pedantic -o $FILENAME.exe $CURRENTFILE;
+		;;
+	*)
+		echo "'$EXTENSION' FORMAT not recognized";
+		;;
+esac									

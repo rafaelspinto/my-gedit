@@ -1,0 +1,26 @@
+#!/bin/sh
+# [Gedit Tool]
+# Name=Clean
+# Shortcut=F3
+# Applicability=all
+# Output=output-panel
+# Input=nothing
+# Save-files=nothing
+
+CURRENTFILE=$GEDIT_CURRENT_DOCUMENT_NAME;
+FILENAME=`echo $CURRENTFILE | awk -F"." '{ print $1 }'`
+EXTENSION=`echo $CURRENTFILE | awk -F"." '{ print $2 }'`
+
+case $EXTENSION in
+	"java")
+		echo "Deleting $FILENAME.class...";
+		rm $FILENAME.class;
+		;;
+	"c")
+		echo "Deleting $FILENAME.exe...";
+		rm $FILENAME.exe;
+		;;
+	*)
+		echo "Executable not found!";
+		;;
+esac		

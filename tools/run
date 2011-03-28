@@ -1,0 +1,24 @@
+#!/bin/sh
+# [Gedit Tool]
+# Name=Run
+# Shortcut=F4
+# Applicability=all
+# Output=output-panel
+# Input=nothing
+# Save-files=nothing
+
+CURRENTFILE=$GEDIT_CURRENT_DOCUMENT_NAME;
+FILENAME=`echo $CURRENTFILE | awk -F"." '{ print $1 }'`
+EXTENSION=`echo $CURRENTFILE | awk -F"." '{ print $2 }'`
+
+case $EXTENSION in
+	"java")
+		java $FILENAME;
+		;;
+	"c")
+		$GEDIT_CURRENT_DOCUMENT_DIR/$FILENAME.exe;
+		;;
+	*)
+		echo "Executable not found!";
+		;;
+esac		
