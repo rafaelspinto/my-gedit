@@ -1,0 +1,22 @@
+#!/bin/sh
+# [Gedit Tool]
+# Name=Ildasm
+# Shortcut=F2
+# Applicability=all
+# Output=output-panel
+# Input=nothing
+# Save-files=nothing
+
+FILE=$GEDIT_CURRENT_DOCUMENT_NAME;
+FILENAME=`echo $FILE | awk -F"." '{ print $1 }'`;
+EXTENSION=`echo $FILE | awk -F"." '{ print $2 }'`;
+case $EXTENSION in
+
+	"cs")
+			echo "Running ILDASM on C# file: '$FILE'";
+			ildasm $FILENAME.exe;
+			;;
+		*)
+			echo "File extension '$EXTENSION' not recognized";
+			;;
+esac
