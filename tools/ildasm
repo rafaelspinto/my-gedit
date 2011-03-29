@@ -14,7 +14,7 @@ case $EXTENSION in
 
 	"cs")
 			echo "Running ILDASM on C# file: '$FILE'";
-			ildasm $FILENAME.exe;
+			/usr/bin/cli-ildasm $FILENAME.exe;
 			;;
 		*)
 			echo "File extension '$EXTENSION' not recognized";
