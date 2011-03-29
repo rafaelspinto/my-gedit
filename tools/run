@@ -12,10 +12,15 @@ FILENAME=`echo $CURRENTFILE | awk -F"." '{ print $1 }'`
 EXTENSION=`echo $CURRENTFILE | awk -F"." '{ print $2 }'`
 
 case $EXTENSION in
+	"cs")
+		 [ -f $FILENAME.exe ] && chmod +x $FILENAME.exe 
+		 ./$FILENAME.exe
+		;;
 	"java")
 		java $FILENAME;
 		;;
 	"c")
+		[ -f $FILENAME.exe ] && chmod +x $FILENAME.exe
 		$GEDIT_CURRENT_DOCUMENT_DIR/$FILENAME.exe;
 		;;
 	*)
