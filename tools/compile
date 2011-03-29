@@ -12,6 +12,9 @@ FILENAME=`echo $CURRENTFILE | awk -F"." '{ print $1 }'`
 EXTENSION=`echo $CURRENTFILE | awk -F"." '{ print $2 }'`
 
 case $EXTENSION in
+	"cs")
+		csc -warn:0 $CURRENTFILE;
+		;;
 	"java")
 		javac $CURRENTFILE;
 		;;
